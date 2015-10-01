@@ -65,7 +65,7 @@ var Formify = ( function () {
     }
 
     this.formifyContent.setAttribute('style', 'display: block;');
-    this.formifyContent.innerText = val;
+    this.formifyContent.innerText = val || this.placeholder || 'Put Content Here';
   }
 
   function creatContext (el) {
