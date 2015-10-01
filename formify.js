@@ -1,37 +1,43 @@
-var formify = function () {
+var Formify = ( function () {
   "use strict";
   // find formify
   // build virtual form for submit
   // create formify form
   // create copy of formify model
   // #TODO: return object
-
   var form = document.getElementById('formify');
-  init(form);
+  var Formify = {
+    init: function () {
+      let i = form.length;
 
-  function init ( form ) {
-    let i = form.length;
+      while ( i-- ) {
+        let input = form[i];
+        input.setAttribute('style', 'display: none;');
+        input.addEventListener('blur', hideInput);
+        input.formifyContent = creatContext(input);
+        if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
+          input.parentNode
+            .appendChild(input.formifyContent)
+            .addEventListener('click', showInput);
+        }
+      }
+    },
 
-    while ( i-- ) {
-      let input = form[i];
-      input.setAttribute('style', 'display: none;');
-      input.addEventListener('blur', hideInput);
-      input.formifyContent = creatContext(input);
-      if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
-        input.parentNode
-          .appendChild(input.formifyContent)
-          .addEventListener('click', showInput);
+    showForm: function () {
+      let i = form.length;
+
+      while ( i-- ) {
+        form[i].setAttribute('style', 'display: block;');
+      }
+    },
+
+    hideForm: function () {
+      let i = form.length;
+      while ( i-- ) {
+        form[i].setAttribute('style', 'display: none;');
       }
     }
-  }
-
-  function showForm () {
-    let i = form.length;
-
-    while ( i-- ) {
-      form[i].setAttribute('style', 'display: block;');
-    }
-  }
+  };
 
   function showInput () {
     let i = this.parentNode.children.length;
@@ -62,12 +68,6 @@ var formify = function () {
     this.formifyContent.innerText = val;
   }
 
-  function hideForm () {
-    while ( i-- ) {
-      form[i].setAttribute('style', 'display: block;');
-    }
-  }
-
   function creatContext (el) {
     let content = document.createElement('span');
     content.className = 'formify-input';
@@ -75,4 +75,6 @@ var formify = function () {
     content.formifyInput = el;
     return content;
   }
-};
+
+  return Formify;
+}());
