@@ -49,11 +49,17 @@ var formify = function () {
   }
 
   function hideInput () {
+    let val = this.value;
+
     this.setAttribute('style', 'display: none;');
+
     if ( this.type === 'range') {
-      form.querySelector('[for=' + this.formifyInput.id +']').setAttribute('style', 'display: none;');
+      let output = form.querySelector('[for=' + this.id +']');
+      output.setAttribute('style', 'display: none;');
     }
+
     this.formifyContent.setAttribute('style', 'display: block;');
+    this.formifyContent.innerText = val;
   }
 
   function hideForm () {
