@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    </head>
+    <body>
+      <form id="formify" method="ajax" action="http://urlgoeshere.com/ws">
+        <legend>Personal details</legend>
+        <input name="first" type="text" placeholder="First name" value="John" required />
+        <input name="last" type="text" placeholder="Last name" value="Smith" required />
+        <label>Birthday
+          <input name="dob" type="date" placeholder="Date of Birth" value="2015-05-13" required />
+        </label>
+        <input name="email" type="email" placeholder="Email" value="john.smith@google.com" required />
+        <input name="url" type="url" placeholder="Your Website" value="http://google.com"/>
+        <input name="phone" type="tel" placeholder="Telephone" value="555-555-5555" required />
+        <label>Height
+          <input name="height" type="number" min="4" max="7" step="0.1" value="6" />
+        </label>
+        <label>Age
+          <input id="age" name="age" type="range" min="1" max="100" value="32" oninput="ageView.value = age.value" />
+          <output id="ageView">32</output>
+        </label>
+        <textarea id="address" name="address" rows="5" placeholder="Address" required>1659 Elm Avenue North Royalton, OH 44133</textarea> <br>
+        <input id="country" name="country" list="country-names" type="text" placeholder="country name" value="Ireland" required />
+        <datalist id="country-names">
+          <option label="England" value="England"></option>
+          <option label="Northern Ireland" value="Northern Ireland"></option>
+          <option label="Ireland" value="Ireland"></option>
+          <option label="Scotland" value="Scotland"></option>
+          <option label="Wales" value="Wales"></option>
+        </datalist>
+        <br>
+        <input class="button-primary" type="submit" value="Submit" />
+        <input class="button-primary" type="reset" value="Reset" />
+      </form>
+
+      <script type="text/javascript" src="formify.js"></script>
+
+      <script type="text/javascript">
+        //formify();
+      </script>
+    </body>
+</html>
