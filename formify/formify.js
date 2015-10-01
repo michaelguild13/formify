@@ -4,41 +4,69 @@ var formify = function () {
   // build virtual form for submit
   // create formify form
   // create copy of formify model
+  // #TODO: return object
+
   var form = document.getElementById('formify');
-  var i = form.length;
+  init(form);
 
-  while ( i-- ) {
-    var input = form[i];
-    input.setAttribute('style', 'display: none;');
-
-    if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
-      input.parentNode.appendChild(creatContext(input))
-        .addEventListener('click', showInputs);
-    }
-  }
-
-  function showInputs () {
-    console.log(this);
-    var i = this.parentNode.children.length
-    this.setAttribute('style', 'display: none;');
+  function init ( form ) {
+    let i = form.length;
 
     while ( i-- ) {
-      var child = this.parentNode.children[i];
-      if ( child.className !== 'formify-input' ) {
-        child.setAttribute('style', 'display: block;');
-        child.tagName === 'INPUT' || child.tagName === 'TEXTAREA' ? child.focus():'';
+      let input = form[i];
+      input.setAttribute('style', 'display: none;');
+      input.addEventListener('blur', hideInput);
+      input.formifyContent = creatContext(input);
+      if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
+        input.parentNode
+          .appendChild(input.formifyContent)
+          .addEventListener('click', showInput);
       }
     }
   }
 
-  function hideInputs () {
+  function showForm () {
+    let i = form.length;
 
+    while ( i-- ) {
+      form[i].setAttribute('style', 'display: block;');
+    }
+  }
+
+  function showInput () {
+    let i = this.parentNode.children.length;
+    this.setAttribute('style', 'display: none;');
+
+    while ( i-- ) {
+      let child = this.parentNode.children[i];
+      if ( child === this.formifyInput ) {
+        child.setAttribute('style', 'display: block;');
+        child.focus();
+      } else if ( this.formifyInput.type === 'range') {
+        form.querySelector('[for=' + this.formifyInput.id +']').setAttribute('style', 'display: block;');
+      }
+    }
+  }
+
+  function hideInput () {
+    this.setAttribute('style', 'display: none;');
+    if ( this.type === 'range') {
+      form.querySelector('[for=' + this.formifyInput.id +']').setAttribute('style', 'display: none;');
+    }
+    this.formifyContent.setAttribute('style', 'display: block;');
+  }
+
+  function hideForm () {
+    while ( i-- ) {
+      form[i].setAttribute('style', 'display: block;');
+    }
   }
 
   function creatContext (el) {
-    var content = document.createElement('span');
+    let content = document.createElement('span');
     content.className = 'formify-input';
     content.innerText = el.value;
+    content.formifyInput = el;
     return content;
   }
 };
