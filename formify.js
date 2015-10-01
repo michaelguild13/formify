@@ -17,7 +17,7 @@ var Formify = ( function () {
         input.formifyContent = creatContext(input);
         if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
           input.parentNode
-            .appendChild(input.formifyContent)
+            .insertBefore(input.formifyContent, input.nextSibling)
             .addEventListener('click', showInput);
         }
       }
