@@ -6,6 +6,23 @@ var Formify = ( function () {
   // create copy of formify model
   // #TODO: return object
   var form = document.getElementById('formify');
+  var inputFactory = {
+    submit: function () {},
+    reset: function () {},
+    button: function () {},
+    output: function () {},
+    radio: function () {},
+    checkbox: function () {},
+    range: inputInit,
+    number: inputInit,
+    url: inputInit,
+    date: inputInit,
+    email: inputInit,
+    tel: inputInit,
+    text: inputInit,
+    textarea: inputInit
+  };
+
   var Formify = {
     init: function () {
       let i = form.length;
@@ -15,11 +32,12 @@ var Formify = ( function () {
         input.setAttribute('style', 'display: none;');
         input.addEventListener('blur', hideInput);
         input.formifyContent = creatContext(input);
-        if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
-          input.parentNode
-            .insertBefore(input.formifyContent, input.nextSibling)
-            .addEventListener('click', showInput);
-        }
+        inputFactory[input.type](input);
+        // if (input.type !== 'submit' && input.type !== 'reset' && input.type !== 'button' && input.type !== 'output') {
+        //   input.parentNode
+        //     .insertBefore(input.formifyContent, input.nextSibling)
+        //     .addEventListener('click', showInput);
+        // }
       }
     },
 
@@ -74,6 +92,12 @@ var Formify = ( function () {
     content.innerText = el.value;
     content.formifyInput = el;
     return content;
+  }
+
+  function inputInit (input) {
+    input.parentNode
+      .insertBefore(input.formifyContent, input.nextSibling)
+      .addEventListener('click', showInput);
   }
 
   return Formify;
