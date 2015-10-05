@@ -22,10 +22,14 @@
           <div class="six columns">
             <input name="last" type="text" placeholder="Last name" value="Smith" required />
           </div>
-          <input name="status" type="text" value="lost in translation" required />
           <label>Birthday
             <input name="dob" type="date" placeholder="Date of Birth" value="2015-05-13" required />
           </label>
+          <input type="radio" name="gender" value="Male" />
+          <input type="radio" name="gender" value="Female" />
+          <input type="radio" name="gender" value="Cat" />
+          <input type="checkbox" name="agree" value="yes" />
+          <input type="checkbox" name="likescats" value="yes" />
         </div>
         <div class="row">
           <input name="phone" type="tel" placeholder="Telephone" value="555-555-5555" required />
@@ -49,11 +53,6 @@
           <option label="Wales" value="Wales"></option>
         </datalist>
         <br>
-        Do you like cookies?
-        <input type="radio" name="cookies" value="Yes" />Yes<br />
-        <input type="radio" name="cookies" value="No" />No<br />
-        <input type="radio" name="cookies" value="Kind of" />Kind of...<br />
-
         <input class="button-primary" type="submit" value="Submit" />
         <input class="button-primary" type="reset" value="Reset" />
       </form>
