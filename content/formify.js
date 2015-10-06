@@ -14,7 +14,7 @@ var Formify = ( function () {
         date: function () {},
         email: function () {},
         tel: function () {},
-        text: function (input) { debugger; console.log('poop');},
+        text: function (input) { console.log(input);},
         textarea: function () {}
       };
 
@@ -26,11 +26,10 @@ var Formify = ( function () {
 
       while ( i-- ) {
         // add to form model
-        this.form.unshift(inputs[i]);
+        //this.form.unshift(inputs[i]);
         let c = inputs[i].classList.length;
         while ( c-- ){
-          //Create Inputs using input factory
-          inputFactory[inputs[i].classList[i]] && inputFactory[inputs[i].classList[i]](inputs[i]);
+          inputFactory[inputs[i].classList[c]] && inputFactory[inputs[i].classList[c]](inputs[i]);
         }
       }
     },
