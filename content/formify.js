@@ -8,14 +8,15 @@ var Formify = ( function () {
         radio: function (input) {},
         checkbox: function (input) {},
         range: function (input) {},
-        number: function (input) {input.appendChild(createInput(input, 'number'));},
-        url: function (input) {input.appendChild(createInput(input, 'url'));},
-        date: function (input) {input.appendChild(createInput(input, 'date'));},
-        email: function (input) {input.appendChild(createInput(input, 'email'));},
-        tel: function (input) { input.appendChild(createInput(input, 'tel'));},
-        text: function (input) { input.appendChild(createInput(input, 'text'));},
-        textarea: function (input) { input.appendChild(createTextArea(input, 'textarea'));},
-        contenteditable: function (input) { createTextArea(input);}
+        select: function (input) {},
+        number: function (input) { return (createInput(input, 'number'));},
+        url: function (input) { return (createInput(input, 'url'));},
+        date: function (input) { return (createInput(input, 'date'));},
+        email: function (input) { return (createInput(input, 'email'));},
+        tel: function (input) { return (createInput(input, 'tel'));},
+        text: function (input) { return (createInput(input, 'text'));},
+        textarea: function (input) { return (createTextArea(input, 'textarea'));},
+        contenteditable: function (input) { return createTextArea(input);}
       };
 
   var Formify = {
@@ -26,18 +27,30 @@ var Formify = ( function () {
 
       while ( i-- ) {
         // add to form model
-        //this.form.unshift(inputs[i]);
+
         let c = inputs[i].classList.length;
         while ( c-- ){
-          inputFactory[inputs[i].classList[c]] && inputFactory[inputs[i].classList[c]](inputs[i]);
+          let input = inputFactory[inputs[i].classList[c]] && inputFactory[inputs[i].classList[c]](inputs[i]);
+          if ( input ) {
+            inputs[i].appendChild(input);
+            this.form.unshift(input);
+          }
         }
       }
     },
 
     showForm: function () {
+      let i = this.form.length;
+      while ( i-- ) {
+        this.form[i].style.display = 'block';
+      }
     },
 
     hideForm: function () {
+      let i = this.form.length;
+      while ( i-- ) {
+        this.form[i].style.display = 'none';
+      }
     }
   };
 
@@ -67,7 +80,13 @@ function createTextArea( el, type ) {
       el.firstChild.innerHTML = input.value;
     }, false);
   } else {
+    input = document.createElement('input');
+    input.type = 'hidden';
     el.contentEditable = true;
+    el.lastChild.value = el.innerHTML;
+    el.addEventListener("blur", function() {
+      el.lastChild.value = el.innerHTML;
+    }, false);
   }
   return input;
 }
