@@ -1,13 +1,27 @@
 # formify
-Formify makes it so you can make editable markup wherever you want.
-It's built in pure Js so you can add it to whatever framework you want without worry of dependencies
+Formify creates a vitual form model based on the formify class to make nodes "contenteditable".
+Do single updates or whole page content updates via form submission though traditional or ajax methods.
 
-***This is a work in progress***
+Simply add the class .formify with any of the following input types:
+.submit
+.reset
+.button
+.radio
+.checkbox
+.range
+.select
+.number
+.url
+.date
+.email
+.tel
+.text
+.textarea
+.contenteditable
 
-To use: create a form and give it an id of "formify"
-from there, put your inputs or what have you, wherever you want and formify will turn it into visual content that can be editable on the fly.
-
-ex:
-<form id="formify" method="ajax" action="url here">
-<input name="name" placeholder="your name" value="john doe" required />
-</form>
+````ex:
+<div class="formify input" title="firstname">John</div>
+<div class="formify input" title="lastname">Smith</div>
+<div class="formify textarea" title="status">This is my status</div>
+<div class="formify contenteditable" title="about">John Smith is a <b>developer</b> in the DC area</div>
+````
