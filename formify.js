@@ -1,34 +1,34 @@
-"use strict";
 var utils = require('./src/utils.js');
-  var defaults = {
-    form: {
-        method: 'ajax',
-        action: 'http://url.com/'
-    },
-    input: {
-      className: '',
-      before: '',
-      after: ''
-    }
-  };
 
-  var inputFactory = {
-        submit: function (input) {},
-        reset: function (input) {},
-        button: function (input) {},
-        radio: function (input) {},
-        checkbox: function (input) {},
-        range: function (input) {},
-        select: function (input) {},
-        number: function (input) { return (utils.createInput(input, 'number'));},
-        url: function (input) { return (utils.createInput(input, 'url'));},
-        date: function (input) { return (utils.createInput(input, 'date'));},
-        email: function (input) { return (utils.createInput(input, 'email'));},
-        tel: function (input) { return (utils.createInput(input, 'tel'));},
-        text: function (input) { return (utils.createInput(input, 'text'));},
-        textarea: function (input) { return (utils.createTextArea(input, 'textarea'));},
-        contenteditable: function (input) { return utils.createTextArea(input);}
-      };
+var defaults = {
+  form: {
+      method: 'ajax',
+      action: 'http://url.com/'
+  },
+  input: {
+    className: '',
+    before: '',
+    after: ''
+  }
+};
+
+var inputFactory = {
+  submit: function (input) {},
+  reset: function (input) {},
+  button: function (input) {},
+  radio: function (input) {},
+  checkbox: function (input) {},
+  range: function (input) {},
+  select: function (input) {},
+  number: function (input) { return (utils.createInput(input, 'number'));},
+  url: function (input) { return (utils.createInput(input, 'url'));},
+  date: function (input) { return (utils.createInput(input, 'date'));},
+  email: function (input) { return (utils.createInput(input, 'email'));},
+  tel: function (input) { return (utils.createInput(input, 'tel'));},
+  text: function (input) { return (utils.createInput(input, 'text'));},
+  textarea: function (input) { return (utils.createTextArea(input, 'textarea'));},
+  contenteditable: function (input) { return utils.createTextArea(input);}
+};
 
 var Formify = {
   form: [],

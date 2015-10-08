@@ -1,5 +1,3 @@
-"use strict";
-
 var utils = {
   extendDefaults: function (defaults, opts) {
     // for ( var k in opts ) {
