@@ -1,0 +1,22 @@
+{
+  "name": "formify",
+  "version": "1.0.0",
+  "description": "Formify creates a vitual form model based on the formify class to make nodes \"contenteditable\". Do single updates or whole page content updates via form submission though traditional or ajax methods.",
+  "main": "formify.js",
+  "scripts": {
+    "build": "browserify formify.js -o formify.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelguild13/formify.git"
+  },
+  "author": "Michael Guild",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelguild13/formify/issues"
+  },
+  "homepage": "https://github.com/michaelguild13/formify#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}
