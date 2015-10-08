@@ -2,12 +2,12 @@
 
 var utils = {
   extendDefaults: function (defaults, opts) {
-    for ( var k in opts ) {
-      if ( defaults[k] && opts[k] && typeof opts[k] === 'object') {
-        options.push(extendDefaults(defaults[k], opts[k]));
-      } else {
-      }
-    }
+    // for ( var k in opts ) {
+    //   if ( defaults[k] && opts[k] && typeof opts[k] === 'object') {
+    //     options.push(extendDefaults(defaults[k], opts[k]));
+    //   } else {
+    //   }
+    // }
   },
 
   createInput: function ( el, type ) {
