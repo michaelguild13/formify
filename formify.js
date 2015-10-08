@@ -13,30 +13,30 @@ var defaults = {
 };
 
 var inputFactory = {
-  submit: function (input) {},
-  reset: function (input) {},
-  button: function (input) {},
-  radio: function (input) {},
-  checkbox: function (input) {},
-  range: function (input) {},
-  select: function (input) {},
-  number: function (input) { return (utils.createInput(input, 'number'));},
-  url: function (input) { return (utils.createInput(input, 'url'));},
-  date: function (input) { return (utils.createInput(input, 'date'));},
-  email: function (input) { return (utils.createInput(input, 'email'));},
-  tel: function (input) { return (utils.createInput(input, 'tel'));},
-  text: function (input) { return (utils.createInput(input, 'text'));},
-  textarea: function (input) { return (utils.createTextArea(input, 'textarea'));},
-  contenteditable: function (input) { return utils.createTextArea(input);}
+  submit: (input) => {},
+  reset: (input) => {},
+  button: (input) => {},
+  radio: (input) => {},
+  checkbox: (input) => {},
+  range: (input) => {},
+  select: (input) => {},
+  number: (input) => { return (utils.createInput(input, 'number'));},
+  url: (input) => { return (utils.createInput(input, 'url'));},
+  date: (input) => { return (utils.createInput(input, 'date'));},
+  email: (input) => { return (utils.createInput(input, 'email'));},
+  tel: (input) => { return (utils.createInput(input, 'tel'));},
+  text: (input) => { return (utils.createInput(input, 'text'));},
+  textarea: (input) => { return (utils.createTextArea(input, 'textarea'));},
+  contenteditable: (input) => { return utils.createTextArea(input);}
 };
 
 var Formify = {
   form: [],
-  init: function () {
+  init: () => {
     // Create options by extending defaults with the passed in arugments
-    if ( arguments[0] && typeof arguments[0] === "object" ) {
-      this.options = utils.extendDefaults(defaults, arguments[0]);
-    }
+    // if ( arguments[0] && typeof arguments[0] === "object" ) {
+    //   this.options = utils.extendDefaults(defaults, arguments[0]);
+    // }
 
     let inputs = document.getElementsByClassName('formify'),
         i = inputs.length;
@@ -47,34 +47,34 @@ var Formify = {
         let input = inputFactory[inputs[i].classList[c]] && inputFactory[inputs[i].classList[c]](inputs[i]);
         if ( input ) {
           inputs[i].appendChild(input);
-          this.form.unshift(input);
+          Formify.form.unshift(input);
         }
       }
     }
   },
 
-  showForm: function () {
-    let i = this.form.length;
+  showForm: () => {
+    let i = Formify.form.length;
     while ( i-- ) {
-      this.form[i].style.display = 'block';
+      Formify.form[i].style.display = 'block';
     }
   },
 
-  hideForm: function () {
-    let i = this.form.length;
+  hideForm: () => {
+    let i = Formify.form.length;
     while ( i-- ) {
-      this.form[i].style.display = 'none';
+      Formify.form[i].style.display = 'none';
     }
   },
 
-  submitForm: function () {
+  submitForm: () => {
     let form = document.createElement('form'),
-      i = this.form.length;
+      i = Formify.form.length;
     while ( i-- ) {
       let input = document.createElement('input');
       input.type = 'hidden';
-      input.value = this.form[i].value;
-      input.name = this.form[i].name;
+      input.value = Formify.form[i].value;
+      input.name = Formify.form[i].name;
       form.appendChild(input);
     }
     debugger;
