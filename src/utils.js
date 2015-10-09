@@ -32,7 +32,7 @@ var utils = {
       el.innerHTML = '<span>' + context + '</span>';
       input.value = context;
       input.name = el.title;
-
+      input.style.width = '100%';
       input.addEventListener("change", () => {
         el.firstChild.innerHTML = input.value;
       }, false);

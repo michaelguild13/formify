@@ -13,21 +13,21 @@ var defaults = {
 };
 
 var inputFactory = {
-  submit: (input) => {},
-  reset: (input) => {},
-  button: (input) => {},
-  radio: (input) => {},
-  checkbox: (input) => {},
-  range: (input) => {},
-  select: (input) => {},
-  number: (input) => { return (utils.createInput(input, 'number'));},
-  url: (input) => { return (utils.createInput(input, 'url'));},
-  date: (input) => { return (utils.createInput(input, 'date'));},
-  email: (input) => { return (utils.createInput(input, 'email'));},
-  tel: (input) => { return (utils.createInput(input, 'tel'));},
-  text: (input) => { return (utils.createInput(input, 'text'));},
-  textarea: (input) => { return (utils.createTextArea(input, 'textarea'));},
-  contenteditable: (input) => { return utils.createTextArea(input);}
+  submit: input => {},
+  reset: input => {},
+  button: input => {},
+  radio: input => {},
+  checkbox: input => {},
+  range: input => {},
+  select: input => {},
+  number: input => { return (utils.createInput(input, 'number'));},
+  url: input => { return (utils.createInput(input, 'url'));},
+  date: input => { return (utils.createInput(input, 'date'));},
+  email: input => { return (utils.createInput(input, 'email'));},
+  tel: input => { return (utils.createInput(input, 'tel'));},
+  text: input => { return (utils.createInput(input, 'text'));},
+  textarea: input => { return (utils.createTextArea(input, 'textarea'));},
+  contenteditable: input => { return utils.createTextArea(input);}
 };
 
 var Formify = {

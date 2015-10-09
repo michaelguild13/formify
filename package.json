@@ -5,6 +5,7 @@
   "main": "formify.js",
   "scripts": {
     "build": "browserify formify.js -t babelify -o formify.min.js",
+    "watch": "watchify formify.js -t babelify -o formify.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {},
   "devDependencies": {
     "babelify": "^6.3.0",
-    "browserify": "^11.2.0"
+    "browserify": "^11.2.0",
+    "watchify": "^3.4.0"
   }
 }
