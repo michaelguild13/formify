@@ -1,11 +1,13 @@
 var utils = {
   extendDefaults: (defaults, opts) => {
-    // for ( var k in opts ) {
-    //   if ( defaults[k] && opts[k] && typeof opts[k] === 'object') {
-    //     options.push(extendDefaults(defaults[k], opts[k]));
-    //   } else {
-    //   }
-    // }
+    for ( var k in opts ) {
+      if ( opts[k] && defaults[k] && typeof opts[k] === 'object') {
+        defaults[k] = utils.extendDefaults(defaults[k], opts[k]);
+      } else {
+        defaults[k] = opts[k] || defaults[k];
+      }
+    }
+    return defaults;
   },
 
   createInput: ( el, type ) => {

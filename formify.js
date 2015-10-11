@@ -32,11 +32,12 @@ var inputFactory = {
 
 var Formify = {
   form: [],
-  init: () => {
+  init: (opts) => {
     // Create options by extending defaults with the passed in arugments
-    // if ( arguments[0] && typeof arguments[0] === "object" ) {
-    //   this.options = utils.extendDefaults(defaults, arguments[0]);
-    // }
+    if ( opts && typeof opts === 'object' ) {
+      Formify.options = utils.extendDefaults(defaults, opts);
+    }
+    debugger;
 
     let inputs = document.getElementsByClassName('formify'),
         i = inputs.length;
