@@ -49,7 +49,27 @@ var utils = {
       }, false);
     }
     return input;
-  }
+  },
+
+  createSelect: ( el, type ) => {
+    let input = document.createElement('select'),
+      options = document.getElementById(el.title) || {options:{}},
+      count = options.options.length,
+      context = el.innerText;
+
+    el.innerHTML = '<span>' + context + '</span>';
+    input.name = el.title;
+
+    while ( count-- ) {
+      input.appendChild(options.options[count]);
+    }
+
+    input.addEventListener("change", () => {
+      el.firstChild.innerText = input.value;
+    }, false);
+
+    return input;
+  },
 };
 
 module.exports = utils;

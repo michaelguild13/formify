@@ -27,13 +27,19 @@
             <ul>
               <li>age: <span class="formify" data-formify="range" title="age">30</span></li>
               <li>DOB: <span class="formify" data-formify="date" title="dob">1985-05-29</span></li>
-              <li>Tel: <span class="formify" data-formify="tel" title="tel">555-555-5555</span></li>
-              <li>ID: <span class="formify" data-formify="number" title="number">98807</span></li>
-              <li>Website: <span class="formify" data-formify="url" title="url">https://www.linkedin.com/in/michaelguild</span></li>
+              <li>tel: <span class="formify" data-formify="tel" title="tel">555-555-5555</span></li>
+              <li>id: <span class="formify" data-formify="number" title="number">98807</span></li>
+              <li>website: <span class="formify" data-formify="url" title="url">https://www.linkedin.com/in/michaelguild</span></li>
               <li>department: <span class="formify" data-formify="select" title="department">Development</span></li>
-              <li>Location: <span class="formify" data-formify="select" title="location">Washington, DC</span></li>
-              <li>US Citizen: <span class="formify" data-formify="checkbox" title="iscitizen">Yes</span></li>
-              <li>Relationship Status: <span class="formify" data-formify="radio" title="relationshipstatus">Single</span></li>
+              <li>location: <span class="formify" data-formify="select" title="location">Washington, DC</span>
+                <datalist id="location">
+                  <option value="New York City, NY">New York City, NY</option>
+                  <option value="San Francisco, CA">San Francisco, CA</option>
+                  <option value="Miami, FL">Miami, FL</option>
+                </datalist>
+              </li>
+              <li>US citizen: <span class="formify" data-formify="checkbox" title="iscitizen">Yes</span></li>
+              <li>relationship status: <span class="formify" data-formify="radio" title="relationshipstatus">Single</span></li>
             </ul>
           </div>
           <h2>Textarea</h2>
