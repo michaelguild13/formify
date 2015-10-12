@@ -32,6 +32,7 @@ var inputFactory = {
 
 var Formify = {
   form: [],
+  content: [],
   init: (opts) => {
     // Create options by extending defaults with the passed in arugments
     if ( opts && typeof opts === 'object' ) {
@@ -46,6 +47,7 @@ var Formify = {
       if ( input ) {
         inputs[i].appendChild(input);
         Formify.form.unshift(input);
+        inputs[i].dataset.formify === "contenteditable"? '' : Formify.content.unshift(inputs[i].firstChild);
       }
     }
   },
@@ -61,6 +63,20 @@ var Formify = {
     let i = Formify.form.length;
     while ( i-- ) {
       Formify.form[i].style.display = 'none';
+    }
+  },
+
+  showContent: () => {
+    let i = Formify.content.length;
+    while ( i-- ) {
+      Formify.content[i].style.display = 'inline';
+    }
+  },
+
+  hideContent: () => {
+    let i = Formify.content.length;
+    while ( i-- ) {
+      Formify.content[i].style.display = 'none';
     }
   },
 
