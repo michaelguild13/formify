@@ -82,13 +82,38 @@ var utils = {
     input.value = context;
     input.name = el.title;
     input.setAttribute('checked', true);
-    
+    label.setAttribute('for', el.title);
     label.appendChild(input);
     label.innerHTML += context;
     label.addEventListener("change", () => {
-      label.children[0].checked === true ? el.firstChild.innerText = input.value : el.firstChild.innerText = '';
+      event.target.checked === true ? el.firstChild.innerText = input.value : el.firstChild.innerText = '';
     }, false);
     return label;
+  },
+
+  createRadio: ( el, type ) => {
+    let radios = document.createElement('div'),
+      options = document.getElementById(el.title) || {options:{}},
+      count = options.options.length,
+      context = el.innerText;
+    el.innerHTML = '<span>' + context + '</span>';
+
+    while ( count-- ){
+      let input = document.createElement('input'),
+       label = document.createElement('label');
+      input.type = type;
+      input.value = options.options[count].value;
+      input.name = el.title;
+      input.value === context ? input.setAttribute('checked', true) : input.setAttribute('checked', false);
+      label.appendChild(input);
+      label.innerHTML += options.options[count].value;
+      radios.appendChild(label);
+    }
+    radios.addEventListener("change", () => {
+      el.firstChild.innerText = event.target.value;
+    }, false);
+
+    return radios;
   },
 
 };
