@@ -71,6 +71,26 @@ var utils = {
 
     return input;
   },
+
+  createCheckbox: ( el, type ) => {
+    let input = document.createElement('input'),
+      label = document.createElement('label'),
+      context = el.innerText;
+
+    el.innerHTML = '<span>' + context + '</span>';
+    input.type = type;
+    input.value = context;
+    input.name = el.title;
+    input.setAttribute('checked', true);
+    
+    label.appendChild(input);
+    label.innerHTML += context;
+    label.addEventListener("change", () => {
+      label.children[0].checked === true ? el.firstChild.innerText = input.value : el.firstChild.innerText = '';
+    }, false);
+    return label;
+  },
+
 };
 
 module.exports = utils;
