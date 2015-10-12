@@ -37,19 +37,15 @@ var Formify = {
     if ( opts && typeof opts === 'object' ) {
       Formify.options = utils.extendDefaults(defaults, opts);
     }
-    debugger;
 
     let inputs = document.getElementsByClassName('formify'),
         i = inputs.length;
     while ( i-- ) {
       // add to form model
-      let c = inputs[i].classList.length;
-      while ( c-- ){
-        let input = inputFactory[inputs[i].classList[c]] && inputFactory[inputs[i].classList[c]](inputs[i]);
-        if ( input ) {
-          inputs[i].appendChild(input);
-          Formify.form.unshift(input);
-        }
+      let input = inputFactory[inputs[i].dataset.formify] && inputFactory[inputs[i].dataset.formify](inputs[i]);
+      if ( input ) {
+        inputs[i].appendChild(input);
+        Formify.form.unshift(input);
       }
     }
   },
