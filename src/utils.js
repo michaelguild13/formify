@@ -72,13 +72,13 @@ var utils = {
     return input;
   },
 
-  createCheckbox: ( el, type ) => {
+  createCheckbox: ( el ) => {
     let input = document.createElement('input'),
       label = document.createElement('label'),
       context = el.innerText;
 
     el.innerHTML = '<span>' + context + '</span>';
-    input.type = type;
+    input.type = 'checkbox';
     input.value = context;
     input.name = el.title;
     input.setAttribute('checked', true);
@@ -91,7 +91,7 @@ var utils = {
     return label;
   },
 
-  createRadio: ( el, type ) => {
+  createRadio: ( el ) => {
     let radios = document.createElement('div'),
       options = document.getElementById(el.title) || {options:{}},
       count = options.options.length,
@@ -101,7 +101,7 @@ var utils = {
     while ( count-- ){
       let input = document.createElement('input'),
        label = document.createElement('label');
-      input.type = type;
+      input.type = 'radio';
       input.value = options.options[count].value;
       input.name = el.title;
       input.value === context ? input.setAttribute('checked', true) : input.setAttribute('checked', false);
