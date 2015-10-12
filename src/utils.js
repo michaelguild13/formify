@@ -61,6 +61,7 @@ var utils = {
     input.name = el.title;
 
     while ( count-- ) {
+      context === options.options[0].value ? options.options[0].selected = true : '';
       input.appendChild(options.options[count]);
     }
 
