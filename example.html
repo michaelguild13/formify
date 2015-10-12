@@ -13,6 +13,35 @@
         <p>Formify.init() - initalizes formify <br>
         Formify.showForm() - shows all form inputs <br>
         Formify.hideForm() - hides all form inputs </p>
+        <p>Formify will take any node and make a form element of it to create a vitual form and submit.
+        This makes it so you only need to create the view and the contenteditable sections can then just
+        be declaired.</p>
+        <p>All you have to do is add the class <b>"formify"</b> to whatever you want to turn into a form item. Set
+          <b>data-formify</b> to an input type (ex: text, texarea, date, select, etc.). Also, formify uses the <b>"title"</b> attribute to set the input's name
+          for submission.
+        </p>
+        <pre>
+          <code class="language-html" data-lang="html">
+            Text Input
+            &lt;span class=&quot;formify&quot; data-formify=&quot;text&quot; title=&quot;Name&quot;&gt;Michael Guild&lt;/span&gt;
+
+            Select
+            &lt;span class=&quot;formify&quot; data-formify=&quot;select&quot; title=&quot;department&quot;&gt;Development&lt;/span&gt;
+            &lt;datalist id=&quot;department&quot;&gt;
+            &lt;option value=&quot;Development&quot;&gt;Development&lt;/option&gt;
+            &lt;option value=&quot;HR&quot;&gt;HR&lt;/option&gt;
+            &lt;option value=&quot;Special Ops&quot;&gt;Special Ops&lt;/option&gt;
+            &lt;/datalist&gt;
+
+            Radio
+            &lt;span class=&quot;formify&quot; data-formify=&quot;radio&quot; title=&quot;relationshipstatus&quot;&gt;Single&lt;/span&gt;
+            &lt;datalist id=&quot;relationshipstatus&quot;&gt;
+            &lt;option value=&quot;Single&quot;&gt;Single&lt;/option&gt;
+            &lt;option value=&quot;Taken&quot;&gt;Taken&lt;/option&gt;
+            &lt;option value=&quot;Dragon&quot;&gt;Dragon&lt;/option&gt;
+            &lt;/datalist&gt;
+          </code>
+        </pre>
 
         <div class="row">
           <div class="six columns">
