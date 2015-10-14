@@ -83,10 +83,18 @@ var utils = {
     input.name = el.title;
     input.setAttribute('checked', true);
     label.setAttribute('for', el.title);
+    label.setAttribute('name', el.title);
+    label.setAttribute('value', context);
     label.appendChild(input);
     label.innerHTML += context;
     label.addEventListener("change", () => {
-      event.target.checked === true ? el.firstChild.innerText = input.value : el.firstChild.innerText = '';
+      if ( event.target.checked === true ) {
+        label.setAttribute('value', input.value);
+        el.firstChild.innerText = input.value;
+      } else {
+        label.setAttribute('value', '');
+        el.firstChild.innerText = '';
+      }
     }, false);
     return label;
   },
@@ -109,7 +117,12 @@ var utils = {
       label.innerHTML += options.options[count].value;
       radios.appendChild(label);
     }
+
+    radios.setAttribute('name', el.title);
+    radios.setAttribute('value',context);
+
     radios.addEventListener("change", () => {
+      radios.setAttribute('value', event.target.value);
       el.firstChild.innerText = event.target.value;
     }, false);
 

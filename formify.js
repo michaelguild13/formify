@@ -1,10 +1,6 @@
 var utils = require('./src/utils.js');
 
 var defaults = {
-  form: {
-      method: 'ajax',
-      action: 'http://url.com/'
-  },
   input: {
     className: '',
     before: '',
@@ -80,17 +76,30 @@ var Formify = {
     }
   },
 
-  submitForm: () => {
+  submitForm: (method, action, callback) => {
     let form = document.createElement('form'),
       i = Formify.form.length;
+
     while ( i-- ) {
       let input = document.createElement('input');
       input.type = 'hidden';
-      input.value = Formify.form[i].value;
-      input.name = Formify.form[i].name;
+      input.value = Formify.form[i].value || Formify.form[i].getAttribute('value');
+      input.name = Formify.form[i].name || Formify.form[i].getAttribute('name');
       form.appendChild(input);
     }
-    debugger;
+
+    form.method = method;
+    form.action = action;
+
+    if ( method === 'ajax' || method === 'AJAX' ){
+      form.onsubmit = function ( event ) {
+        event.preventDefault();
+        debugger;
+        return false;
+      };
+    }
+
+    callback ? callback() : form.onsubmit();
   }
 };
 
