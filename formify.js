@@ -37,6 +37,7 @@ var Formify = {
 
     let inputs = document.getElementsByClassName('formify'),
         i = inputs.length;
+
     while ( i-- ) {
       // add to form model
       let input = inputFactory[inputs[i].dataset.formify] && inputFactory[inputs[i].dataset.formify](inputs[i]);
@@ -46,6 +47,7 @@ var Formify = {
         inputs[i].dataset.formify === "contenteditable"? '' : Formify.content.unshift(inputs[i].firstChild);
       }
     }
+    Formify.hideForm();
   },
 
   showForm: () => {
