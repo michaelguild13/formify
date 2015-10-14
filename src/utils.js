@@ -18,7 +18,7 @@ var utils = {
     input.type = type;
     input.value = context;
     input.name = el.title;
-    input.addEventListener("change", () => {
+    input.addEventListener("input", () => {
       el.firstChild.innerText = input.value;
     }, false);
 
@@ -35,7 +35,7 @@ var utils = {
       input.value = context;
       input.name = el.title;
       input.style.width = '100%';
-      input.addEventListener("change", () => {
+      input.addEventListener("input", () => {
         el.firstChild.innerHTML = input.value;
       }, false);
     } else {
@@ -44,7 +44,7 @@ var utils = {
       input.name = el.title;
       input.value = el.innerHTML;
       el.contentEditable = true;
-      el.addEventListener("blur", () => {
+      el.addEventListener("input", () => {
         el.lastChild.value = el.innerHTML;
       }, false);
     }
@@ -65,7 +65,7 @@ var utils = {
       input.appendChild(options.options[count]);
     }
 
-    input.addEventListener("change", () => {
+    input.addEventListener("input", () => {
       el.firstChild.innerText = input.value;
     }, false);
 
@@ -145,7 +145,7 @@ var utils = {
     range.setAttribute('name', el.title);
     range.setAttribute('value',context);
 
-    range.addEventListener("change", () => {
+    range.addEventListener("input", () => {
       range.setAttribute('value',event.target.value);
       el.firstChild.innerText = output.innerText = event.target.value;
     }, false);
