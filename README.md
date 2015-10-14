@@ -25,7 +25,16 @@ Simply add the class .formify, data-formify="<input type>", and title:
 <h1>Methods: </h1>
 <p>Formify.init() - initalizes formify <br>
 Formify.showForm() - shows all form inputs <br>
-Formify.hideForm() - hides all form inputs </p>
+Formify.hideForm() - hides all form inputs <br>
+Formify.showContent() - Shows all contenteditable content <br>
+Formify.hideContent() - hides all contenteditable content <br><br>
+Formify.submitForm( method, action, callback ) - submits the virtual form <br>
+Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use AJAX for Ajax sobmission. <br>
+Action: The URI of a program that processes the information submitted via the form. <br>
+Callback: Optional Callback method for custom submission.
+</p>
+
+
 <p>Formify will take any node and make a form element of it to create a vitual form and submit.
 This makes it so you only need to create the view and the contenteditable sections can then just
 be declaired.</p>
