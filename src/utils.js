@@ -129,6 +129,30 @@ var utils = {
     return radios;
   },
 
+  createRange: ( el ) => {
+    let range = document.createElement('div'),
+      input = document.createElement('input'),
+      output = document.createElement('output'),
+      context = el.innerText;
+
+    el.innerHTML = '<span>' + context + '</span>';
+    input.type = 'range';
+    input.value = output.innerText = context;
+    input.name = el.title;
+
+    range.appendChild(input);
+    range.appendChild(output);
+    range.setAttribute('name', el.title);
+    range.setAttribute('value',context);
+
+    range.addEventListener("change", () => {
+      range.setAttribute('value',event.target.value);
+      el.firstChild.innerText = output.innerText = event.target.value;
+    }, false);
+
+    return range;
+  }
+
 };
 
 module.exports = utils;

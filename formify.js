@@ -14,7 +14,7 @@ var inputFactory = {
   button: input => {},
   radio: input => { return utils.createRadio(input);},
   checkbox: input => { return (utils.createCheckbox(input));},
-  range: input => {},
+  range: input => { return (utils.createRange(input));},
   select: input => { return (utils.createSelect(input));},
   number: input => { return (utils.createInput(input, 'number'));},
   url: input => { return (utils.createInput(input, 'url'));},
@@ -88,8 +88,8 @@ var Formify = {
       form.appendChild(input);
     }
 
-    form.method = method;
-    form.action = action;
+    form.setAttribute('method', method);
+    form.setAttribute('action', action);
 
     if ( method === 'ajax' || method === 'AJAX' ){
       form.onsubmit = function ( event ) {
@@ -99,7 +99,7 @@ var Formify = {
       };
     }
 
-    callback ? callback() : form.onsubmit();
+    callback ? callback() : form.onsubmit(event);
   }
 };
 
