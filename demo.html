@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    </head>
+    <body>
+        <h1>Methods: </h1>
+        <p>Formify.init() - initalizes formify <br>
+        Formify.showForm() - shows all form inputs <br>
+        Formify.hideForm() - hides all form inputs </p>
+        <p>Formify will take any node and make a form element of it to create a vitual form and submit.
+        This makes it so you only need to create the view and the contenteditable sections can then just
+        be declaired.</p>
+        <button onclick="Formify.showForm()">Show Form inputs</button>
+        <button onclick="Formify.hideForm()">Hide Form inputs</button>
+        <button onclick="Formify.showContent()">Show editable Content</button>
+        <button onclick="Formify.hideContent()">Hide Editable Content</button>
+        <button onclick="Formify.submitForm('ajax','urlhere')">Submit Virtual Form</button>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="http://rvrly.com/wp-content/uploads/2013/08/Photo-on-2013-07-16-at-20.04.jpg" height="300"/>
+          </div>
+          <div class="six columns">
+            <h1>
+              <span class="formify" data-formify="text" title="firstname">Michael</span>
+              <span class="formify" data-formify="text" title="lastname">Guild</span>
+            </h1>
+            <h2 class="formify" data-formify="text" title="title">Sr. Front-end Developer</h2>
+            <ul>
+              <li>age: <span class="formify" data-formify="range" title="age">30</span></li>
+              <li>DOB: <span class="formify" data-formify="date" title="dob">1985-05-29</span></li>
+              <li>tel: <span class="formify" data-formify="tel" title="tel">555-555-5555</span></li>
+              <li>id: <span class="formify" data-formify="number" title="number">98807</span></li>
+              <li>website: <span class="formify" data-formify="url" title="url">https://www.linkedin.com/in/michaelguild</span></li>
+              <li>department: <span class="formify" data-formify="select" title="department">Development</span>
+                <datalist id="department">
+                  <option value="Development">Development</option>
+                  <option value="HR">HR</option>
+                  <option value="Special Ops">Special Ops</option>
+                </datalist>
+              </li>
+              <li>location: <span class="formify" data-formify="select" title="location">Washington, DC</span>
+                <datalist id="location">
+                  <option value="Washington, DC">Washington, DC</option>
+                  <option value="New York City, NY">New York City, NY</option>
+                  <option value="San Francisco, CA">San Francisco, CA</option>
+                  <option value="Miami, FL">Miami, FL</option>
+                </datalist>
+              </li>
+              <li>US citizen: <span class="formify" data-formify="checkbox" title="iscitizen">Yes</span></li>
+              <li>relationship status: <span class="formify" data-formify="radio" title="relationshipstatus">Single</span>
+                <datalist id="relationshipstatus">
+                  <option value="Single">Single</option>
+                  <option value="Taken">Taken</option>
+                  <option value="Dragon">Dragon</option>
+                </datalist>
+              </li>
+            </ul>
+          </div>
+          <h2>Textarea</h2>
+          <div class="formify" data-formify="textarea" title="about">
+            <p>I have over 10 years of experience in the field of web development
+              and design with a constant desire to learn new technologies for fun.
+              I've given talks, done training, and have lead teams to success with
+              flat organizational philosophy.</p>
+            <p>resume: https://docs.google.com/document/d/1LtYOiEyuURjhH2b5lsIkO_xtD2b2y2K5DEcv0RVFBOw/edit?usp=sharing</p>
+          </div>
+          <h2>Content Editable Div</h2>
+          <div class="formify" data-formify="contenteditable" title="markup">
+            <p>I have over 10 years of experience in the field of web development
+              and design with a constant desire to learn new technologies for fun.
+              I've given talks, done training, and have lead teams to success with
+              flat organizational philosophy.</p>
+            <p>resume: https://docs.google.com/document/d/1LtYOiEyuURjhH2b5lsIkO_xtD2b2y2K5DEcv0RVFBOw/edit?usp=sharing</p>
+          </div>
+      <script type="text/javascript" src="formify.min.js"></script>
+      <script type="text/javascript">
+        Formify.init({
+          form: {
+            action: 'http://url.com/'
+          },
+          input: {
+            className: 'poop',
+          }
+        });
+      </script>
+    </body>
+</html>
