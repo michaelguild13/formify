@@ -16,6 +16,7 @@ var inputFactory = {
   checkbox: input => { return (utils.createCheckbox(input));},
   range: input => { return (utils.createRange(input));},
   select: input => { return (utils.createSelect(input));},
+  multiselect: input => { return (utils.createSelect(input, true));},
   number: input => { return (utils.createInput(input, 'number'));},
   url: input => { return (utils.createInput(input, 'url'));},
   date: input => { return (utils.createInput(input, 'date'));},

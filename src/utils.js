@@ -51,7 +51,7 @@ var utils = {
     return input;
   },
 
-  createSelect: ( el, type ) => {
+  createSelect: ( el, multiple ) => {
     let input = document.createElement('select'),
       options = document.getElementById(el.title) || {options:{}},
       count = options.options.length,
@@ -65,9 +65,24 @@ var utils = {
       input.appendChild(options.options[count]);
     }
 
-    input.addEventListener("input", () => {
-      el.firstChild.innerText = input.value;
-    }, false);
+    if (multiple) {
+      input.multiple = true;
+      input.addEventListener("input", () => {
+        let selected = event.target.selectedOptions,
+          count = event.target.selectedOptions.length,
+          value = '';
+
+        while ( count-- ) {
+          value += event.target.selectedOptions[count].value + ' ';
+        }
+
+        el.firstChild.innerText = value;
+      }, false);
+    } else {
+      input.addEventListener("input", () => {
+        el.firstChild.innerText = event.target.value;
+      }, false);
+    }
 
     return input;
   },
