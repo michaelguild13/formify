@@ -53,12 +53,12 @@ Build the content view without having to do all the extra work of editable conte
 <h1>
 <a id="methods-" class="anchor" href="#methods-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods: </h1>
 
-<p>Formify.init() - initalizes formify <br>
-Formify.showForm() - shows all form inputs <br>
-Formify.hideForm() - hides all form inputs <br>
-Formify.showContent() - Shows all contenteditable content <br>
-Formify.hideContent() - hides all contenteditable content <br><br>
-Formify.submitForm( method, action, callback ) - submits the virtual form <br>
+<p><b>Formify.init()</b> - initalizes formify <br>
+<b>Formify.showForm()</b> - shows all form inputs <br>
+<b>Formify.hideForm()</b> - hides all form inputs <br>
+<b>Formify.showContent()</b> - Shows all contenteditable content <br>
+<b>Formify.hideContent()</b> - hides all contenteditable content <br><br>
+<b>Formify.submitForm( method, action, callback )</b> - submits the virtual form <br>
 Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use AJAX for Ajax sobmission. <br>
 Action: The URI of a program that processes the information submitted via the form. <br>
 Callback: Optional Callback method for custom submission.
@@ -71,21 +71,26 @@ be declaired.</p>
   <b>data-formify</b> to an input type (ex: text, texarea, date, select, etc.). Also, formify uses the <b>"title"</b> attribute to set the input's name
   for submission.
 </p>
-
+<h2>Text Input</h2>
 <pre>
   <code>
-    Text Input
     &lt;span class="formify" data-formify="text" title="Name"&gt;Michael Guild&lt;/span&gt;
-
-    Select
+  </code>
+</pre>
+<h2>Select</h2>
+<pre>
+  <code>
     &lt;span class="formify" data-formify="select" title="department"&gt;Development&lt;/span&gt;
     &lt;datalist id="department"&gt;
     &lt;option value="Development"&gt;Development&lt;/option&gt;
     &lt;option value="HR"&gt;HR&lt;/option&gt;
     &lt;option value="Special Ops"&gt;Special Ops&lt;/option&gt;
     &lt;/datalist&gt;
-
-    Radio
+  </code>
+</pre>
+<h2>Radio</h2>
+<pre>
+  <code>
     &lt;span class="formify" data-formify="radio" title="relationshipstatus"&gt;Single&lt;/span&gt;
     &lt;datalist id="relationshipstatus"&gt;
     &lt;option value="Single"&gt;Single&lt;/option&gt;
