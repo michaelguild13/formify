@@ -2,7 +2,7 @@
 Do single updates or whole page content updates via form submission though traditional or ajax methods.
 Build the content view without having to do all the extra work of editable content. </p>
 
-<p><a href="demo.html">Click here to Demo</a></p>
+<p><a href="http://michaelguild13.github.io/formify/demo.html">Click here to Demo</a></p>
 
 <ul>
 <li>Will support json schema generation</li>
