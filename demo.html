@@ -16,18 +16,15 @@
         <b>Formify.showContent()</b> - Shows all contenteditable content <br>
         <b>Formify.hideContent()</b> - hides all contenteditable content <br><br>
         <b>Formify.submitForm( method, action, callback )</b> - submits the virtual form <br>
-        Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use AJAX for Ajax sobmission. <br>
+        Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use callback for custom or Ajax submission. <br>
         Action: The URI of a program that processes the information submitted via the form. <br>
         Callback: Optional Callback method for custom submission.
         </p>
-        <p>Formify will take any node and make a form element of it to create a vitual form and submit.
-        This makes it so you only need to create the view and the contenteditable sections can then just
-        be declaired.</p>
         <button onclick="Formify.showForm()">Show Form inputs</button>
         <button onclick="Formify.hideForm()">Hide Form inputs</button>
         <button onclick="Formify.showContent()">Show editable Content</button>
         <button onclick="Formify.hideContent()">Hide Editable Content</button>
-        <button onclick="Formify.submitForm('ajax','urlhere')">Submit Virtual Form</button>
+        <button onclick="Formify.submitForm('ajax','urlhere',submitCallback)">Submit Virtual Form</button>
 
         <div class="row">
           <div class="six columns">
@@ -45,7 +42,7 @@
               <li>tel: <span class="formify" data-formify="tel" title="tel">555-555-5555</span></li>
               <li>id: <span class="formify" data-formify="number" title="number">98807</span></li>
               <li>website: <span class="formify" data-formify="url" title="url">https://www.linkedin.com/in/michaelguild</span></li>
-              <li>department: <span class="formify" data-formify="select" title="department">Development</span>
+              <li>department: <span class="formify" data-formify="multiselect" title="department">Development</span>
                 <datalist id="department">
                   <option value="Development">Development</option>
                   <option value="HR">HR</option>
@@ -61,7 +58,7 @@
                 </datalist>
               </li>
               <li>US citizen: <span class="formify" data-formify="checkbox" title="iscitizen">Yes</span></li>
-              <li>relationship status: <span class="formify" data-formify="radio" title="relationshipstatus">Dragon</span>
+              <li>relationship status: <span class="formify" data-formify="radio" title="relationshipstatus">Single</span>
                 <datalist id="relationshipstatus">
                   <option value="Single">Single</option>
                   <option value="Taken">Taken</option>
@@ -96,6 +93,22 @@
             className: 'poop',
           }
         });
+
+        // Example of callback
+        function submitCallback() {
+          event.preventDefault();
+          var data = {},
+              i = Formify.form.length;
+          //serialize data for ajax
+          while ( i-- ) {
+            var name = Formify.form[i].name || Formify.form[i].getAttribute('name') || '',
+                value = Formify.form[i].value || Formify.form[i].getAttribute('value') || '';
+            data[name] = value;
+          }
+          console.log(data);
+          console.log('Callback :D');
+          return false;
+        }
       </script>
     </body>
 </html>
