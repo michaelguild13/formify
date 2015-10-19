@@ -16,7 +16,7 @@
         <b>Formify.showContent()</b> - Shows all contenteditable content <br>
         <b>Formify.hideContent()</b> - hides all contenteditable content <br><br>
         <b>Formify.submitForm( method, action, callback )</b> - submits the virtual form <br>
-        Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use AJAX for Ajax sobmission. <br>
+        Method: Defines which HTTP method to use when submitting the form. Can be GET (default) or POST. Use callback for custom or Ajax submission. <br>
         Action: The URI of a program that processes the information submitted via the form. <br>
         Callback: Optional Callback method for custom submission.
         </p>
@@ -24,7 +24,7 @@
         <button onclick="Formify.hideForm()">Hide Form inputs</button>
         <button onclick="Formify.showContent()">Show editable Content</button>
         <button onclick="Formify.hideContent()">Hide Editable Content</button>
-        <button onclick="Formify.submitForm('ajax','urlhere')">Submit Virtual Form</button>
+        <button onclick="Formify.submitForm('ajax','urlhere',submitCallback)">Submit Virtual Form</button>
 
         <div class="row">
           <div class="six columns">
@@ -93,6 +93,22 @@
             className: 'poop',
           }
         });
+
+        // Example of callback
+        function submitCallback() {
+          event.preventDefault();
+          var data = {},
+              i = Formify.form.length;
+          //serialize data for ajax
+          while ( i-- ) {
+            var name = Formify.form[i].name || Formify.form[i].getAttribute('name') || '',
+                value = Formify.form[i].value || Formify.form[i].getAttribute('value') || '';
+            data[name] = value;
+          }
+          console.log(data);
+          console.log('Callback :D');
+          return false;
+        }
       </script>
     </body>
 </html>

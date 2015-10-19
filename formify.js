@@ -94,14 +94,6 @@ var Formify = {
     form.setAttribute('method', method);
     form.setAttribute('action', action);
 
-    if ( method === 'ajax' || method === 'AJAX' ){
-      form.onsubmit = function ( event ) {
-        event.preventDefault();
-        debugger;
-        return false;
-      };
-    }
-
     callback ? callback() : form.onsubmit(event);
   }
 };
