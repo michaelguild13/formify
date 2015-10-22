@@ -1,17 +1,16 @@
 var utils = require('./src/utils.js');
 
 var defaults = {
-  input: {
-    className: '',
-    before: '',
-    after: ''
-  }
+  className: '',
+  before: '',
+  after: ''
 };
 
 var inputFactory = {
   submit: input => {},
   reset: input => {},
   button: input => {},
+  img: input => { return (utils.createImg(input));},
   radio: input => { return utils.createRadio(input);},
   checkbox: input => { return (utils.createCheckbox(input));},
   range: input => { return (utils.createRange(input));},
@@ -22,6 +21,7 @@ var inputFactory = {
   date: input => { return (utils.createInput(input, 'date'));},
   email: input => { return (utils.createInput(input, 'email'));},
   tel: input => { return (utils.createInput(input, 'tel'));},
+  file: input => { return (utils.createInput(input, 'file'));},
   text: input => { return (utils.createInput(input, 'text'));},
   textarea: input => { return (utils.createTextArea(input, 'textarea'));},
   contenteditable: input => { return utils.createTextArea(input);}
@@ -43,9 +43,17 @@ var Formify = {
       // add to form model
       let input = inputFactory[inputs[i].dataset.formify] && inputFactory[inputs[i].dataset.formify](inputs[i]);
       if ( input ) {
-        inputs[i].appendChild(input);
+        input.className = Formify.options.className || '';
+
+        // check if element is self closing
+        if (inputs[i].innerText == '' && inputs[i].innerHTML == '') {
+          inputs[i].parentElement.appendChild(input);
+        } else {
+          inputs[i].appendChild(input);
+        }
+
         Formify.form.unshift(input);
-        inputs[i].dataset.formify === "contenteditable"? '' : Formify.content.unshift(inputs[i].firstChild);
+        inputs[i].dataset.formify === 'contenteditable' || inputs[i].dataset.formify === 'img' ? '' : Formify.content.unshift(inputs[i].firstChild);
       }
     }
     Formify.hideForm();

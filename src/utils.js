@@ -16,7 +16,8 @@ var utils = {
 
     el.innerHTML = '<span>' + context + '</span>';
     input.type = type;
-    input.value = context;
+    input.value = type == 'file' ? '' : context;
+    input.placeholder = context;
     input.name = el.title;
     input.addEventListener("input", () => {
       el.firstChild.innerText = input.value;
@@ -166,7 +167,25 @@ var utils = {
     }, false);
 
     return range;
-  }
+  },
+
+  createImg: ( el, type ) => {
+    let input = document.createElement('input'),
+      context = el.innerText;
+
+    input.type = 'file';
+    input.name = el.title;
+    input.accept = 'image/*';
+    el.parentElement.addEventListener("change", () => {
+      let reader = new FileReader();
+      reader.onload = function (e) {
+        el.src = e.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }, false);
+
+    return input;
+  },
 
 };
 
