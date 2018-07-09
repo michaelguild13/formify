@@ -1,3 +1,5 @@
+<h1>Auto generate same page forms</h1>
+<strong>Kind of like linkedin's Ui...kinda</strong>
 <p>Formify creates a vitual form model based on the formify class to make nodes "contenteditable".
 Do single updates or whole page content updates via form submission though traditional or ajax methods.
 Build the content view without having to do all the extra work of editable content. </p>
